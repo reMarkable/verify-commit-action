@@ -1,0 +1,15 @@
+name: 'Verify commit in branch'
+description: 'Verifies that a commit exists in the history of a branch'
+inputs:
+  path:
+    description: 'Path to git checkout'
+    required: true
+  ref:
+    description: 'Branch to search in'
+    required: true
+  sha:
+    description: 'sha to verify'
+    required: true
+runs:
+  using: 'node12'
+  main: 'index.js'
