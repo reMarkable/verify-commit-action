@@ -41,11 +41,11 @@ try {
       return element.trim() != '';
     });
 
-    var index = branches.indexOf('refs/heads/' + ref);
+    var index = branches.indexOf(ref);
 
     if (index == -1) {
       core.setFailed(`Unable to find "${sha}" in the history of ref "${ref}"`)
-      return 0
+      return 1
     }
 
     console.log(`Found "${sha}" in the history of ref "${ref}"`)
