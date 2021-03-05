@@ -31,8 +31,8 @@ try {
 
   exec(`git branch --format "%(refname)" --contains ${sha}`, {cwd: path}, (error, stdout, stderr) => {
     if (error) {
-      console.error(stderr.trim());
-      return 1;
+      core.setFailed(stderr);
+      return
     }
 
     var os = require('os');
@@ -45,11 +45,10 @@ try {
 
     if (index == -1) {
       core.setFailed(`Unable to find "${sha}" in the history of ref "${ref}"`)
-      return 1
+      return
     }
 
     console.log(`Found "${sha}" in the history of ref "${ref}"`)
-    return 0
   });
 
 } catch (error) {
